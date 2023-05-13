@@ -1,0 +1,225 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>filimo</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+    <script type="text/babel">
+        var rootElement = document.getElementById("root");
+        var movieFavorite = [
+            {
+                image :"assets/images/rahayamkon.jpg",
+                link : "https://www.filimo.com/m/132691",
+            },
+            {
+                image :"assets/images/reactor.jpeg",
+                link : "https://www.filimo.com/m/133827",
+            },
+            {
+                image :"assets/images/newcamp.jpeg",
+                link : "https://www.filimo.com/m/131941",
+            },
+            {
+                image :"assets/images/mehmooni1.jpg",
+                link : "https://www.filimo.com/m/132689",
+            },
+            {
+                image :"assets/images/div va mah.jpg",
+                link : "https://www.filimo.com/m/131383",
+            },
+            {
+                image :"assets/images/tnt.jpg",
+                link : "https://www.filimo.com/m/130789",
+            },
+    ]
+    var movieFavorite1 = [
+            {
+                image :"assets/images/mehmooni.jpg",
+                link : "https://www.filimo.com/m/132691",
+            },
+            {
+                image :"assets/images/bambala.webp",
+                link : "https://www.filimo.com/m/133827",
+            },
+            {
+                image :"assets/images/mentalist.jpg",
+                link : "https://www.filimo.com/m/131941",
+            },
+            {
+                image :"assets/images/mahpishoni.jpg",
+                link : "https://www.filimo.com/m/132689",
+            },
+            {
+                image :"assets/images/ronas.webp",
+                link : "https://www.filimo.com/m/131383",
+            },
+            {
+                image :"assets/images/ghozaba.webp",
+                link : "https://www.filimo.com/m/130789",
+            },
+    ]
+    var movieFavorite2 = [
+            {
+                image: "assets/images/mov_9258_27939-s.webp",
+                    link: "https://www.filimo.com/m/133827",
+            },
+            {
+                image: "assets/images/mov_11381_315-s.webp",
+                    link: "https://www.filimo.com/m/131941",
+            },
+            {
+                image: "assets/images/mov_15804_16979-s.webp",
+                    link: "https://www.filimo.com/m/132689",
+            },
+            {
+                image: "assets/images/mov_24190_1-s.webp",
+                    link: "https://www.filimo.com/m/131383",
+            },
+            {
+                
+                image: "assets/images/mov_30040_808-s.webp",
+                    link: "https://www.filimo.com/m/130789",
+            },
+            {
+                image: "assets/images/mov_130962_52696-s.webp",
+                    link: "https://www.filimo.com/m/130789",
+            },
+    ]
+    var TvFilm1 = [
+            {
+                link:"www.aparat.com/v/7uROr?t=80",
+                imageUrl:"assets/images/what watch.png",
+                text:"فیلیمو باکس چیست و چه امکاناتی دارد؟",
+            },
+            {
+                link:"www.aparat.com/v/KEW8c?t=1",
+                imageUrl:"assets/images/how-see.png",
+                text:"چطور با فیلیمو باکس فیلم تماشا کنیم؟"
+            },
+            {
+                link:"www.aparat.com/v/5du7V?t=88",
+                imageUrl:"assets/images/howset.png",
+                text:"چطور با کنترل فیلیموباکس کار کنیم؟"
+            }
+            ];
+        var TvFilm2 = [
+            {
+                link:"www.aparat.com/v/NLHWY?t=4",
+                imageUrl:"assets/images/cast.png",
+                text: "تلویزیون ما سیستم عامل اندروید دارد."
+            },
+            {
+                link:"www.aparat.com/v/l78K9?t=3",
+                imageUrl:"assets/images/cable.png",
+                text:"می‌خواهم با اتصال کابل به تلویزیون، فیلیمو ببینم. "
+            },
+            {
+                link:"www.aparat.com/v/hg1TZ?t=2",
+                imageUrl:"assets/images/LG-tv.png",
+                text:"تلویزیون ما LG است."
+            }
+            ]
+            var TvFilm3 = [
+            {
+                link:"www.aparat.com/v/NLHWY?t=4",
+                imageUrl:"assets/images/androidtv.png",
+                text: "تلویزیون ما سیستم عامل اندروید دارد."
+            },
+            {
+                link:"www.aparat.com/v/l78K9?t=3",
+                imageUrl:"assets/images/smart.png",
+                text:"می‌خواهم با اتصال کابل به تلویزیون، فیلیمو ببینم. "
+            },
+            {
+                link:"www.aparat.com/v/hg1TZ?t=2",
+                imageUrl:"assets/images/miro.png",
+                text:"تلویزیون ما LG است."
+            }
+            ]
+        function PopularMovie (props){
+            function LiClick(event) {
+                event.target.classList.toggle('active');
+            }
+            return  props.data.map(function(movie, index){
+                return(
+                    <li key={index} onClick={LiClick}>
+                        <div className="info">
+                            <a href={movie.link} target="_blank">
+                                <img src={movie.image} />
+                            </a>
+                        </div>
+                    </li>
+                );
+            });
+        }
+        function MovieTvWatch(props){
+            return props.data.map(function(item ,index){
+                return(
+                    <li key={index}>
+                       <a href={item.link}>
+                        <div className="info">
+                            <img src={item.imageUrl}/>
+                            <div className="Play">
+                                <i className="fa-solid fa-play"></i>
+                            </div>
+                            <div className="text">
+                                    <p>{item.text}</p>
+                            </div>
+                        </div>
+                        </a>
+                    </li>
+                )
+            }
+            )
+
+        }
+        var element = (
+                <div className="container">
+                    <div className="favorite-list vertical-padding">
+                        <div className="title-section">
+                            <h2 className="title">محبوب ترین های فیلیمو</h2>
+                            <div className="select">
+                                <div className="first">سریال</div>
+                                <div className="second">فیلم</div>
+                            </div>
+                       </div>     
+                        <ul className="special">         
+                                <PopularMovie  data={movieFavorite}></PopularMovie>
+                        </ul>
+                        <h2 className="title">    محبوب ترینهای فیلیمو لیست دوم </h2>
+                        <ul className="special">         
+                                <PopularMovie  data={movieFavorite1}></PopularMovie>
+                        </ul>
+                        <h2 className="title">   محبوب ترین های فیلیمو لیست سوم</h2>
+                        <ul className="special">         
+                                <PopularMovie  data={movieFavorite2}></PopularMovie>
+                        </ul>
+                    </div>
+                    <div className="filimoBox ">
+                        <h2 className="title"> فیلیمو باکس اول  </h2>
+                        <ul className="boxFilm">
+                            <MovieTvWatch data={TvFilm1}></MovieTvWatch>
+                         </ul>
+                         <h2 className="title"> فیلیمو باکس دوم  </h2>
+                         <ul className="boxFilm">
+                            <MovieTvWatch data={TvFilm2}></MovieTvWatch>
+                         </ul>
+                         <h2 className="title"> فیلیمو باکس سوم  </h2>
+                         <ul className="boxFilm">
+                            <MovieTvWatch data={TvFilm3}></MovieTvWatch>
+                         </ul>
+
+                    </div>
+                </div>
+                    )
+        ReactDOM.render(element, rootElement);
+    </script>
+</body>
+</html>
